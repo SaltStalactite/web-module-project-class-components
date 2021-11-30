@@ -54,6 +54,13 @@ class App extends React.Component {
     })
   }
 
+  handleClear = () => {
+    this.setState({
+      ...this.state,
+      todos: this.state.todos.filter(todos => !todo.completed)
+    })
+  }
+
   render() {
     return (
       <div>
