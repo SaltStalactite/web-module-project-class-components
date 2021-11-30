@@ -24,10 +24,23 @@ class App extends React.Component {
     }
   }
 
+  addHandler = (todo) => {
+    const newTodo = {
+      todo: todo,
+      id: Date.now(),
+      completed: false
+    }
+
+    this.setState({
+      ...this.state,
+      todos: [...this.state.todos, newTodo]
+    })
+  }
+
   render() {
     return (
       <div>
-        <h2>Welcome to your Todo App!</h2>
+        <h1>To Do's</h1>
       </div>
     );
   }
