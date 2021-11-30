@@ -1,4 +1,5 @@
 import React from 'react';
+import TodoForm from './components/TodoForm';
 
 const todoData = [
   {
@@ -41,6 +42,8 @@ class App extends React.Component {
     return (
       <div>
         <h1>To Do's</h1>
+        <TodoForm addHandler={this.addHandler} />
+        <button>Clear completed</button>
       </div>
     );
   }
