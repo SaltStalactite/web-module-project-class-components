@@ -1,14 +1,15 @@
 import React from 'react';
-import TodoForm from './components/TodoForm';
+import TodoForm from './components/TodoForm'
+import TodoList from './components/TodoList'
 
-const todoData = [
+const todos = [
   {
-    task: 'Organize Garage',
+    todo: 'Organize Garage',
     id: 1528817077286,
     completed: false
   },
   {
-    task: 'Bake Cookies',
+    todo: 'Bake Cookies',
     id: 1528817084358,
     completed: false
   }
@@ -21,11 +22,12 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      todos: todoData
+      todos: todos
     }
   }
 
-  addHandler = (todo) => {
+  handleAddItem = (todo) => {
+
     const newTodo = {
       todo: todo,
       id: Date.now(),
@@ -57,16 +59,21 @@ class App extends React.Component {
   handleClear = () => {
     this.setState({
       ...this.state,
-      todos: this.state.todos.filter(todos => !todo.completed)
+      todos: this.state.todos.filter(todo => !todo.completed)
     })
   }
 
   render() {
     return (
       <div>
-        <h1>To Do's</h1>
-        <TodoForm addHandler={this.addHandler} />
-        <button>Clear completed</button>
+        <div>
+          <h1>To Do List</h1>
+          <TodoForm handleAddItem={this.handleAddItem} />
+          <button onClick={this.handleClear}>Clear completed</button>
+        </div>
+        <div>
+          <TodoList handleToggleTodo={this.handleToggleTodo} todos={this.state.todos} />
+        </div>
       </div>
     );
   }
