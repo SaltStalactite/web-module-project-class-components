@@ -38,6 +38,22 @@ class App extends React.Component {
     })
   }
 
+  handleToggleTodo = (todo) => {
+
+    this.setState({
+      ...this.state,
+      todos: this.state.todos.map(task => {
+        if (task.id === todo.id) {
+          return ({
+            ...todo,
+            completed: !todo.completed
+          })
+        }
+        return task
+      })
+    })
+  }
+
   render() {
     return (
       <div>
